@@ -1,5 +1,75 @@
+version: "3.8"
+
 # SERVICES #
+services:
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    image: my-nginx
+    restart: always
+    volumes: 
+      - /etc/data/wordpress:/var/www/html
+    ports:
+      - 443:443
+    env_file: .env
+    environment:
+      - NGINX_HOST=$DOMAIN_NAME
+      - NGINX_PORT=443
+    networks:
+        - my-network
+  
+# wordpress:
+#   build: 
+#     context: ./requirements/wordpress
+#   image: my-wordpress-img
+#   volumes: 
+#     - wordpress-v:/path/to/wordpress
+#   env_file:
+#     - path: .env
+#     required: true # default
+#     environment:
+#       - WORDPRESS_DB_HOST:      $(DOMAIN_NAME)
+#       - WORDPRESS_DB_USER:      $(USER)
+#       - WORDPRESS_DB_PASSWORD:  $(WORDPRESS_DB_PASSWORD)
+#       - WORDPRESS_DB_NAME:      $(WORDPRESS_DB_NAME)
+#     networks:
+#       - my-network
+
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb
+    restart: always
+    volumes: 
+     - /usr/share/lib/mysql:/usr/share/lib/mysql
+    ports:
+      - 3306:3306
+    env_file: .env
+    environment:
+      - MARIADB_USER=$(MARIADB_USER)
+      - MYSQL_ROOT_PASSWORD=$(MARIADB_PASSWORD)
+    networks:
+        - my-network
 
 # VOLUMES #
-
+# volumes:
+#   wordpress-volume:
+#     external:
+#       name: wordpress-v
+#       driver: local
+#       driver_opts:
+#         type: none
+#         device: /etc/data/wordpress
+#         o: bind
+  # mariadb-volume:
+  #   external:
+  #     name: mariadb-v
+  #     driver: local
+  #     driver_opts:
+  #         type: none
+  #         device: /path/on/host
+  #         o: bind
+  
 # NETWORKS #
+networks: 
+  my-network:
+    driver: bridge
