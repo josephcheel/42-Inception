@@ -35,20 +35,20 @@ services:
 #     networks:
 #       - my-network
 
-  mariadb:
-    build: ./requirements/mariadb
-    image: mariadb
-    restart: always
-    volumes: 
-     - /usr/share/lib/mysql:/usr/share/lib/mysql
-    ports:
-      - 3306:3306
-    env_file: .env
-    environment:
-      - MARIADB_USER=$(MARIADB_USER)
-      - MYSQL_ROOT_PASSWORD=$(MARIADB_PASSWORD)
-    networks:
-        - my-network
+# mariadb:
+#   build: ./requirements/mariadb
+#   image: mariadb
+#   restart: always
+#   volumes: 
+#    - /usr/share/lib/mysql:/usr/share/lib/mysql
+#   ports:
+#     - 3306:3306
+#   env_file: .env
+#   environment:
+#     - MARIADB_USER=$(MARIADB_USER)
+#     - MYSQL_ROOT_PASSWORD=$(MARIADB_PASSWORD)
+#   networks:
+#       - my-network
 
 # VOLUMES #
 # volumes:
