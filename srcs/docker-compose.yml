@@ -2,13 +2,14 @@ version: "3.8"
 
 # SERVICES #
 services:
-  nginx:
-    container_name: nginx
+# Nginx #
+  my-nginx:
+    container_name: my-nginx
     build: ./requirements/nginx
-    image: my-nginx
+    image: my-nginx-img
     restart: always
     volumes: 
-      - /etc/data/wordpress:/var/www/html
+    - /Users/josephcheel/etc/data/wordpress:/var/www/wordpress
     ports:
       - 443:443
     env_file: .env
@@ -17,38 +18,38 @@ services:
       - NGINX_PORT=443
     networks:
         - my-network
-  
-# wordpress:
-#   build: 
-#     context: ./requirements/wordpress
-#   image: my-wordpress-img
-#   volumes: 
-#     - wordpress-v:/path/to/wordpress
-#   env_file:
-#     - path: .env
-#     required: true # default
-#     environment:
-#       - WORDPRESS_DB_HOST:      $(DOMAIN_NAME)
-#       - WORDPRESS_DB_USER:      $(USER)
-#       - WORDPRESS_DB_PASSWORD:  $(WORDPRESS_DB_PASSWORD)
-#       - WORDPRESS_DB_NAME:      $(WORDPRESS_DB_NAME)
-#     networks:
-#       - my-network
-
-# mariadb:
-#   build: ./requirements/mariadb
-#   image: mariadb
-#   restart: always
-#   volumes: 
-#    - /usr/share/lib/mysql:/usr/share/lib/mysql
-#   ports:
-#     - 3306:3306
-#   env_file: .env
-#   environment:
-#     - MARIADB_USER=$(MARIADB_USER)
-#     - MYSQL_ROOT_PASSWORD=$(MARIADB_PASSWORD)
-#   networks:
-#       - my-network
+# Wordpress #
+  my-wordpress:
+    container_name: my-wordpress
+    build: ./requirements/wordpress
+    image: my-wordpress-img
+    volumes: 
+     - /Users/josephcheel/etc/data/wordpress:/var/www/wordpress
+     #- /etc/data/wordpress:/path/to/wordpress
+    env_file: .env
+    environment:
+      - WORDPRESS_DB_HOST=$DOMAIN_NAME
+      - WORDPRESS_DB_USER=$USER
+      - WORDPRESS_DB_PASSWORD=$WORDPRESS_DB_PASSWORD
+      - WORDPRESS_DB_NAME=$WORDPRESS_DB_NAME
+    networks:
+      - my-network
+# Mariadb #
+  my-mariadb:
+    container_name: my-mariadb
+    build: ./requirements/mariadb
+    image: my-mariadb-img
+    restart: always
+    volumes: 
+    - /Users/josephcheel/etc/data/mariadb:/path/to/mariadb
+    ports:
+      - 3306:3306
+    env_file: .env
+    environment:
+      - MARIADB_USER=$MARIADB_USER
+      - MYSQL_ROOT_PASSWORD=$MARIADB_PASSWORD
+    networks:
+        - my-network
 
 # VOLUMES #
 # volumes:
