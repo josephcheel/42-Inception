@@ -9,7 +9,7 @@ services:
     image: my-nginx-img
     restart: always
     volumes: 
-    - /Users/josephcheel/etc/data/wordpress:/var/www/wordpress
+    - /home/$USER/data/wordpress:/var/www/wordpress
     ports:
       - 443:443
     env_file: .env
@@ -24,7 +24,7 @@ services:
     build: ./requirements/wordpress
     image: my-wordpress-img
     volumes: 
-     - /Users/josephcheel/etc/data/wordpress:/var/www/wordpress
+     - /home/$USER/data/wordpress:/var/www/wordpress
      #- /etc/data/wordpress:/path/to/wordpress
     env_file: .env
     environment:
@@ -41,7 +41,7 @@ services:
     image: my-mariadb-img
     restart: always
     volumes: 
-    - /Users/josephcheel/etc/data/mariadb:/path/to/mariadb
+    - /home/$USER/data/mariadb:/path/to/mariadb
     ports:
       - 3306:3306
     env_file: .env
