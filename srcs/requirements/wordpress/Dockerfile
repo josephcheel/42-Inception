@@ -27,4 +27,4 @@ COPY ./config/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 # RUN wp core download --path=wordpress/ --allow-root
 #CMD ["/usr/sbin/php-fpm7.4", "-F"]
 # php-fpm7 --nodaemonize
-CMD ["bash", "/opt/wp_init.sh"]
+ENTRYPOINT ["bash", "/opt/wp_init.sh"]
