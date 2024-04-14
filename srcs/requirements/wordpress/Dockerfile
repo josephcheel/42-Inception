@@ -24,6 +24,7 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 COPY ./tools/wp_init.sh /opt/wp_init.sh
 
 COPY ./config/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY ./config/wp_config.php /var/www/wordpress/wp_config.php
 # RUN wp core download --path=wordpress/ --allow-root
 #CMD ["/usr/sbin/php-fpm7.4", "-F"]
 # php-fpm7 --nodaemonize
