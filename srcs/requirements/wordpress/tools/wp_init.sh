@@ -6,5 +6,5 @@ else
 	echo "WordPress Installing"
 	wp core download --path=/var/www/wordpress --allow-root
 fi
-
+mv /var/www/wp-config.php /var/www/wordpress/wp-config.php
 /usr/sbin/php-fpm7.4 -F
