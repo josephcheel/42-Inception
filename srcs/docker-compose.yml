@@ -70,15 +70,13 @@ networks:
 ########## VOLUMES ##########
 volumes:
   wordpress-volume:
-    external:
       name: wordpress-volume
       driver: local
       driver_opts:
-        type: none
-        device: /home/jcheel-n/data/wordpress
-        o: bind
+          type: none
+          device: /home/jcheel-n/data/wordpress
+          o: bind
   mariadb-volume:
-    external:
       name: mariadb-volume
       driver: local
       driver_opts:
