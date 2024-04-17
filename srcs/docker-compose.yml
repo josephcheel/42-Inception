@@ -11,8 +11,8 @@ services:
     image: my-nginx-img
     restart: always
     volumes: 
-    #- /home/$USER/data/wordpress:/var/www/wordpress
-    - /Users/josephcheel/data/wordpress:/var/www/wordpress
+    - /home/jcheel-n/data/wordpress:/var/www/wordpress
+      #- /Users/josephcheel/data/wordpress:/var/www/wordpress
     ports:
       - 443:443
     env_file: .env
@@ -28,8 +28,8 @@ services:
     image: my-wordpress-img
     restart: always
     volumes: 
-     #- /home/$USER/data/wordpress:/var/www/wordpress
-     - /Users/josephcheel/data/wordpress:/var/www/wordpress
+     - /home/jcheel-n/data/wordpress:/var/www/wordpress
+       #- /Users/josephcheel/data/wordpress:/var/www/wordpress
     env_file: .env
     environment:
       - DB_NAME=$MARIADB_DB_NAME
@@ -44,8 +44,8 @@ services:
     image: my-mariadb-img
     restart: always
     volumes: 
-    #- /home/$USER/data/mariadb:/path/to/mariadb
-    -  /Users/josephcheel/data/mariadb:/var/lib/mysql
+    - /home/jcheel-n/data/mariadb:/var/lib/mysql
+    #-  /Users/josephcheel/data/mariadb:/var/lib/mysql
     env_file: .env
     environment:
       - MARIADB_DB_NAME=$MARIADB_DB_NAME
