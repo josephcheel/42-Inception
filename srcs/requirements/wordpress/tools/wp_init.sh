@@ -5,10 +5,9 @@ if [ -d "/var/www/wordpress/wp-admin" ]; then
 else
 	echo "WordPress Installing"
 	wp core download --path=/var/www/wordpress --allow-root
-	# wp config DB_NAME $DB_NAME
-	# wp config DB_USER $DB_USER
-	# wp config DB_PASSWORD $DB_PASSWORD
-	wp config create --dbname=$DB_NAME-dbuser=$DB_USER --dbpass=$DB_PASSWORD
+	wp config create --path=/var/www/wordpress --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASSWORD --dbhost=my-mariadb:3306 --allow-root
+	wp core install --path=/var/www/wordpress --url=$DOMAIN_NAME --title="my wordpress website!" --admin_user=$DB_USER --admin_password=$DB_PASSWORD  --admin_email=jcheel-n@student.42barcelona.com --skip-email --allow-root
+	wp user create --path=/var/www/wordpress example example@example.com --role=contributor --user_pass=$DB_PASSWORD --allow-root
 fi
 #mv /var/www/wp-config.php /var/www/wordpress/wp-config.php
 
