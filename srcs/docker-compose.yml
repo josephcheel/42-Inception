@@ -4,7 +4,7 @@ version: "3.8"
 services:
 #### Nginx ####
   my-nginx:
-    container_name: my-nginx
+    container_name: nginx
     build: ./requirements/nginx
     image: my-nginx-img
     restart: always
@@ -17,7 +17,7 @@ services:
 
 #### Wordpress ####
   my-wordpress:
-    container_name: my-wordpress
+    container_name: wordpress
     build: ./requirements/wordpress
     image: my-wordpress-img
     restart: always
@@ -47,7 +47,7 @@ services:
 
 #### Mariadb ####
   my-mariadb:
-    container_name: my-mariadb
+    container_name: mariadb
     build: ./requirements/mariadb
     image: my-mariadb-img
     restart: always
