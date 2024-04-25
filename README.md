@@ -9,7 +9,6 @@
 </h1>
 <!--FINISH HEADER-->
 
-> [Evaluation Sheet](https://rphlr.github.io/42-Evals/Rank05/Inception/)
 
 ### What is Docker?
 ### What is docker compose and docker-compose.yml
