@@ -9,6 +9,9 @@
 </h1>
 <!--FINISH HEADER-->
 
+<div align="center">
+<img  alt="42" width=500 align="center" src="https://github.com/josephcheel/readme/blob/3403dbb3fbb528c345a29466b1e38789ecfb631a/resources/inception/Scheme.png"> 
+</div>
 <!--
 ### What is Docker?
 ### What is docker compose and docker-compose.yml
