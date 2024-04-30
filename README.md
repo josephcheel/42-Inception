@@ -9,7 +9,7 @@
 </h1>
 <!--FINISH HEADER-->
 
-
+<!--
 ### What is Docker?
 ### What is docker compose and docker-compose.yml
 ### What is a Container?
@@ -24,3 +24,4 @@
 ### WORDPRESS
 ### PHP-fpm(without nginx)
 ### MariaDB
+-->
